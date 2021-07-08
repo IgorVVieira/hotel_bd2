@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import routes from './routes/routes';
+import connection from './database/connection';
 
 class App {
     constructor() {
