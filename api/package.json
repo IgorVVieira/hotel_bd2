@@ -1,0 +1,21 @@
+{
+  "name": "hotel_bd2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/IgorVVieira/hotel_bd2.git",
+  "author": "IgorVVieira <igor.gutoo63@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "sucrase-node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.10",
+    "sucrase": "^3.20.0"
+  }
+}
