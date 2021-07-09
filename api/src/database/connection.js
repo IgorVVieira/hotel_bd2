@@ -1,12 +1,13 @@
-import { MongoClient } from 'mongodb'
+import { MongoClient } from 'mongodb';
 
-const uri = '';
+const uri = "";
 
-MongoClient.connect(uri, (error, client) => {
-    if (error) {
-        console.error(error);
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+    if (err) {
+        console.error(`Conexão falhou: ${err}`);
     }
-    client.db(process.env.DB_NAME);
-})
+    const collection = client.db("test").collection("devices");
+});
 
-export default MongoClient;
+export default client;
