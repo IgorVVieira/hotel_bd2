@@ -18,7 +18,7 @@ class ReservaController {
 
             return response.json(reserva);
         } catch (error) {
-            console.log(`Erro: ${error}`);
+            return response.status(500).json({ 'Erro': error });
         }
     }
 }
