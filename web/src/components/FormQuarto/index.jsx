@@ -15,13 +15,13 @@ const FormQuarto = () => {
     }
 
     return (
-        <div className="Login">
+        <div className="FormQuarto">
             <Form onSubmit={handleSubmit}>
-                <Form.Group size="lg" controlId="email">
+                <Form.Group size="lg" controlId="codigo">
                     <Form.Label>Código</Form.Label>
                     <Form.Control
                         autoFocus
-                        type="email"
+                        type="codigo"
                         value={codigo}
                         onChange={(e) => setCodigo(e.target.value)}
                     />
