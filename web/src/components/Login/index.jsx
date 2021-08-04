@@ -6,10 +6,12 @@ import { useHistory, NavLink } from 'react-router-dom';
 import './Login.css';
 
 import api from '../../services/api';
+import { login } from '../../services/auth';
+
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
     const history = useHistory();
 
@@ -21,7 +23,7 @@ const Login = () => {
         }
 
         try {
-            await api.post('/login', data);
+            const response = await api.post('/login', data);
             toast.success('Login realizado com sucecesso.', {
                 position: "top-center",
                 hideProgressBar: false,
@@ -30,6 +32,7 @@ const Login = () => {
                 draggable: true,
                 progress: 0,
             });
+            login(response.data.token);
             history.push('/quarto');
         } catch (error) {
             toast.error('Usuário ou senha incorretos.', {
