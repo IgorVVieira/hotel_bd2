@@ -5,6 +5,7 @@ import { isAuthenticated } from './services/auth';
 
 import Login from './components/Login';
 import FormQuarto from './components/FormQuarto';
+import Quartos from './components/Quartos';
 import NewUser from './components/NewUser';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -26,6 +27,7 @@ const Routes = () => {
             <Switch>
                 <Route exact path='/' component={Login} />
                 <PrivateRoute path='/quarto' component={FormQuarto} />
+                <PrivateRoute path='/quartos' component={Quartos} />
                 <Route path='/novo-usuario' component={NewUser} />
             </Switch>
         </BrowserRouter>
