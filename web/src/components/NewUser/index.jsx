@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { toast } from 'react-toastify';
 import { useHistory, NavLink } from 'react-router-dom';
-import './NewUser.css';
 
 import api from '../../services/api';
 
@@ -50,7 +49,7 @@ const Login = () => {
     }
 
     return (
-        <div className="NewUser">
+        <div className="Formulario">
             <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="nome">
                     <Form.Label>Nome</Form.Label>

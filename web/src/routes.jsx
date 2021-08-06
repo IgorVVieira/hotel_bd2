@@ -26,7 +26,7 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Login} />
-                <PrivateRoute path='/quarto' component={FormQuarto} />
+                <PrivateRoute path='/novo-quarto' component={FormQuarto} />
                 <PrivateRoute path='/quartos' component={Quartos} />
                 <Route path='/novo-usuario' component={NewUser} />
             </Switch>

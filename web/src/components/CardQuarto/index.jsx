@@ -2,22 +2,31 @@ import React from 'react';
 
 import Card from 'react-bootstrap/Card';
 
+import './styles.css';
+
 const CardQuarto = ({ quarto }) => {
     return (
-        <Card
-            bg="primary"
-            text="Teste"
-            style={{ width: '18rem' }}
-            className="mb-2"
-        >
-            <Card.Body>
-                <Card.Title>Código {quarto.codigo} </Card.Title>
-                <Card.Text>
-                    Andar: {quarto.andar} 
-                    {"\n"}Descrição: {quarto.descricao}.
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div className="Center-page">
+            <Card
+                bg="secondary"
+                text="light"
+                style={{ width: '20rem' }}
+                className="mb-2 mt-3"
+            >
+                <Card.Body>
+                    <Card.Title>Código {quarto.codigo} </Card.Title>
+                    <Card.Text>
+                        <ul className="list-unstyled">
+                            <li> <strong>Andar:</strong> {quarto.andar}</li>
+                            <li><strong>Descrição:</strong> {quarto.descricao}</li>
+                            <li>
+                                <button>Reservar</button>
+                            </li>
+                        </ul>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </div>
     );
 }
 

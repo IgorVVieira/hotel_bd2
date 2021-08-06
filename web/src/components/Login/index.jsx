@@ -53,7 +53,7 @@ const Login = () => {
     }
 
     return (
-        <div className="Login">
+        <div className="Formulario">
             <NavLink to='/novo-usuario'>Cadastrar</NavLink>
             <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="email">
