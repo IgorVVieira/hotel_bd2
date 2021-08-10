@@ -16,6 +16,7 @@ route.post('/reserva/:quarto_id/:user_id', ReservaController.store);
 
 route.get('/users', UserController.index);
 route.get('/user/:id', UserController.show);
+route.put('/user', UserController.update);
 route.post('/user', UserController.store);
 
 export default route;

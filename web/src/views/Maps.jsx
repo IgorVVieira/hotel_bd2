@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 
-// react-bootstrap components
-import { Badge, Button, Navbar, Nav, Container } from "react-bootstrap";
+import { Badge, Button, Navbar, Nav, Container } from 'react-bootstrap';
 
-function Maps() {
+const Maps = () => {
   const mapRef = React.useRef(null);
   React.useEffect(() => {
     let google = window.google;

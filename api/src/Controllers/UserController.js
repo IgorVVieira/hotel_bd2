@@ -42,7 +42,24 @@ class User {
             return response.json(user);
         } catch (error) {
             return response.status(500).json({ 'Erro': error });
+        }
+    }
 
+    async update(request, response) {
+        try {
+            const { id, nome, email, cpf, idade, senha } = request.body;
+            const user = await db.collection('users').findOneAndUpdate({ _id: ObjectID(id) }, {
+                $set: {
+                    "nome": nome,
+                    "idade": idade,
+                    "cpf": cpf,
+                    "email": email,
+                    "senha": senha,
+                }
+            });
+            return response.json(user);
+        } catch (error) {
+            return response.status(500).json({ 'Erro': error });
         }
     }
 }

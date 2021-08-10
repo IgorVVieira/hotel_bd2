@@ -1,18 +1,19 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
-  Badge,
   Button,
   Card,
   Form,
-  Navbar,
-  Nav,
   Container,
   Row,
   Col,
 } from 'react-bootstrap';
 
-import { getUser, getToken } from '../services/auth';
+import NotificationAlert from 'react-notification-alert';
+
+import { getUser } from '../services/auth';
+import api from '../services/api';
+import { setUser } from '../services/auth';
 
 const User = () => {
   const [nome, setNome] = useState('');
@@ -21,9 +22,11 @@ const User = () => {
   const [idade, setIdade] = useState('');
   const [senha, setSenha] = useState('');
 
+  const notificationAlertRef = React.useRef(null);
+  const user = JSON.parse(getUser());
+
   useEffect(async () => {
     try {
-      const user = JSON.parse(getUser());
       setNome(user.nome);
       setEmail(user.email);
       setCpf(user.cpf);
@@ -34,8 +37,52 @@ const User = () => {
     }
   }, []);
 
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await api.put('/user', { id: user._id, nome, email, cpf, idade, senha });
+      console.log(response.data.value)
+      setNome(response.data.value.nome);
+      setEmail(response.data.value.email);
+      setCpf(response.data.value.cpf);
+      setIdade(response.data.value.idade);
+      setSenha(response.data.value.senha);
+      setUser(response.data.value);
+
+      notificationAlertRef.current.notificationAlert({
+        place: 'tc',
+        message: (
+          <div>
+            <div>
+              Perfil alterado com sucesso.
+            </div>
+          </div>
+        ),
+        type: "success",
+        icon: "now-ui-icons ui-1_bell-53",
+        autoDismiss: 7
+      });
+    } catch (error) {
+      console.log(error);
+      notificationAlertRef.current.notificationAlert({
+        place: 'tc',
+        message: (
+          <div>
+            <div>
+              Erro ao atualizar o perfil. Tente novamente.
+            </div>
+          </div>
+        ),
+        type: "danger",
+        icon: "now-ui-icons ui-1_bell-53",
+        autoDismiss: 7
+      });
+    }
+  }
+
   return (
     <>
+      <NotificationAlert ref={notificationAlertRef} />
       <Container fluid>
         <Row>
           <Col md="8">
@@ -44,7 +91,7 @@ const User = () => {
                 <Card.Title as="h4" className="text-center">Editar perfil</Card.Title>
               </Card.Header>
               <Card.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Row>
                     <Col md="4">
                       <Form.Group>

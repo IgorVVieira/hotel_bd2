@@ -22,7 +22,7 @@ import { useHistory } from 'react-router-dom';
 
 import { logout } from '../../services/auth';
 
-import routes from "routes.js";
+import routes from 'routes';
 
 function Header() {
   const history = useHistory();

@@ -1,6 +1,5 @@
-import React from "react";
+import React from 'react';
 
-// react-bootstrap components
 import {
   Badge,
   Button,
@@ -10,9 +9,9 @@ import {
   Container,
   Row,
   Col,
-} from "react-bootstrap";
+} from 'react-bootstrap';
 
-function Icons() {
+const Icons = () => {
   return (
     <>
       <Container fluid>
