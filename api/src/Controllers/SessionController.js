@@ -2,7 +2,6 @@ import { db } from '../database/connection';
 
 import jwt from 'jsonwebtoken';
 
-
 class SessionController {
     async login(request, response) {
         try {
@@ -26,6 +25,17 @@ class SessionController {
         } catch (error) {
             return response.status(500).json({ 'Erro': error });
         }
+    }
+
+    verifyJwt(request, response, next) {
+        const { token } = request.headers;
+        jwt.verify(token, process.env.SECRET, (err, decoded) => {
+            if (err) {
+                return response.status(400).end();
+            }
+            request.user_id = decoded.user_id;
+            next();
+        });
     }
 }
 
