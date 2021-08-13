@@ -27,7 +27,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import AdminLayout from 'layouts/Admin';
 import Login from './views/Login';
+import NewUser from './views/NewUser';
 import { isAuthenticated } from './services/auth';
+
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -47,6 +49,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route path="/novo-usuario" component={NewUser} />
         <PrivateRoute path="/admin" to="/admin/dashboard" component={(props) => <AdminLayout {...props} />} />
       </Switch>
     </BrowserRouter>

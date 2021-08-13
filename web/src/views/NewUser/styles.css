@@ -1,0 +1,13 @@
+@media all and (min-width: 480px) {
+    .FormularioNovoUsuario {
+      padding: 60px 0;
+    }
+  
+    .FormularioNovoUsuario form {
+      margin: 0 auto;
+      max-width: 550px;
+      border: 1px solid;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }

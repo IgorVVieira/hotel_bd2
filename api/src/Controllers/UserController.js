@@ -30,13 +30,14 @@ class User {
 
     async store(request, response) {
         try {
-            const { nome, idade, cpf, email, senha } = request.body;
+            const { nome, idade, cpf, email, senha, adm } = request.body;
             const user = await db.collection('users').insertOne({
                 nome,
                 idade,
                 cpf,
                 email,
                 senha,
+                adm,
             });
 
             return response.json(user);

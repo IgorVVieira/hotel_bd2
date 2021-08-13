@@ -41,6 +41,33 @@ class QuartoController {
             return response.status(500).json({ 'Erro': error });
         }
     }
+
+    async update(request, response) {
+        try {
+            const { id, codigo, andar, valor, descricao } = request.body;
+            const quarto = await db.collection('quartos').findOneAndUpdate({ _id: ObjectID(id) }, {
+                $set: {
+                    "codigo": codigo,
+                    "andar": andar,
+                    "valor": valor,
+                    "descricao": descricao,
+                }
+            });
+            return response.json(quarto);
+        } catch (error) {
+            return response.status(500).json({ 'Erro': error });
+        }
+    }
+    async destroy(request, response) {
+        try {
+            const { id } = request.params;
+            await db.collection('quartos').deleteOne({ _id: ObjectID(id) });
+
+            return response.status(200);
+        } catch (error) {
+            return response.status(500).json({ 'Erro': error });
+        }
+    }
 }
 
 export default new QuartoController;

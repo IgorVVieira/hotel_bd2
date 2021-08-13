@@ -22,11 +22,12 @@ import Typography from 'views/Typography';
 import Icons from 'views/Icons';
 import Maps from 'views/Maps';
 import Notifications from 'views/Notifications';
+import FormQuarto from 'views/FormQuarto';
 
 const dashboardRoutes = [
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "Início",
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
     layout: "/admin",
@@ -36,6 +37,13 @@ const dashboardRoutes = [
     name: "Perfil",
     icon: "nc-icon nc-circle-09",
     component: UserProfile,
+    layout: "/admin",
+  },
+  {
+    path: "/novo-quarto",
+    name: "Novo quarto",
+    icon: "nc-icon nc-notes",
+    component: FormQuarto,
     layout: "/admin",
   },
   {
