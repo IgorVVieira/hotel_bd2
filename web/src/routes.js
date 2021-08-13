@@ -17,10 +17,7 @@
 */
 import Dashboard from 'views/Dashboard';
 import UserProfile from 'views/UserProfile';
-import TableList from 'views/TableList';
-import Typography from 'views/Typography';
 import Icons from 'views/Icons';
-import Maps from 'views/Maps';
 import Notifications from 'views/Notifications';
 import FormQuarto from 'views/FormQuarto';
 
@@ -47,17 +44,10 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/table",
-    name: "Table List",
-    icon: "nc-icon nc-notes",
-    component: TableList,
-    layout: "/admin",
-  },
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: "nc-icon nc-paper-2",
-    component: Typography,
+    path: "/nova-reserva",
+    name: "Nova reserva",
+    icon: "nc-icon nc-lock-circle-open",
+    component: FormQuarto,
     layout: "/admin",
   },
   {
@@ -65,13 +55,6 @@ const dashboardRoutes = [
     name: "Icons",
     icon: "nc-icon nc-atom",
     component: Icons,
-    layout: "/admin",
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "nc-icon nc-pin-3",
-    component: Maps,
     layout: "/admin",
   },
   {

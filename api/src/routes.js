@@ -8,16 +8,16 @@ import SessionController from './Controllers/SessionController';
 
 route.post('/login', SessionController.login);
 
-route.post('/quarto', SessionController.verifyJwt, QuartoController.store);
-route.get('/quartos', SessionController.verifyJwt, QuartoController.index);
-route.get('/quarto/:id', SessionController.verifyJwt, QuartoController.show);
-route.delete('/quarto/:id', SessionController.verifyJwt, QuartoController.destroy);
+route.post('/quarto', QuartoController.store);
+route.get('/quartos', QuartoController.index);
+route.get('/quarto/:id', QuartoController.show);
+route.delete('/quarto/:id', QuartoController.destroy);
 
-route.post('/reserva/:quarto_id/:user_id', SessionController.verifyJwt, ReservaController.store);
+route.post('/reserva/:quarto_id/:user_id', ReservaController.store);
 
-route.get('/users', SessionController.verifyJwt, UserController.index);
-route.get('/user/:id', SessionController.verifyJwt, UserController.show);
+route.get('/users', UserController.index);
+route.get('/user/:id', UserController.show);
 route.post('/user', UserController.store);
-route.put('/user', SessionController.verifyJwt, UserController.update);
+route.put('/user', UserController.update);
 
 export default route;

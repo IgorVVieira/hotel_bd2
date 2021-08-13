@@ -87,21 +87,23 @@ const Dashboard = () => {
                 <Table className="table-hover">
                   <thead>
                     <tr>
-                      <th className="border-0">Código</th>
-                      <th className="border-0">Andar</th>
+                      <th className="border-0 text-center">Código</th>
+                      <th className="border-0 text-center">Andar</th>
+                      <th className="border-0">Valor</th>
                       <th className="border-0">Descrição</th>
                       <th className="border-0">Reservas</th>
-                      <th className="border-0">Ações</th>
+                      <th className="border-0 text-center">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
                     {quartos.map((quarto) => {
                       return (
                         <tr key={quarto._id}>
-                          <td>{quarto.codigo}</td>
+                          <td className="text-center">{quarto.codigo}</td>
                           <td>{quarto.andar}</td>
+                          <td>R$ {quarto.valor},00</td>
                           <td>{quarto.descricao}</td>
-                          <td>5</td>
+                          <td className="text-center">5</td>
                           <td className="td-actions text-left">
                             <OverlayTrigger
                               overlay={
@@ -130,6 +132,20 @@ const Dashboard = () => {
                                 onClick={(e) => { deleteQuarto(e, quarto._id) }}
                               >
                                 <i className="fas fa-times"></i>
+                              </Button>
+                            </OverlayTrigger>
+                            <OverlayTrigger
+                              overlay={
+                                <Tooltip id="tooltip-506045833">Reservar</Tooltip>
+                              }
+                            >
+                              <Button
+                                className="btn-simple btn-link p-1"
+                                type="button"
+                                variant="warning"
+                                onClick={(e) => { deleteQuarto(e, quarto._id) }}
+                              >
+                                <i className="nc-icon nc-lock-circle-open"></i>
                               </Button>
                             </OverlayTrigger>
                           </td>

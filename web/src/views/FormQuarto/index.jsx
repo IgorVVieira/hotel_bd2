@@ -7,6 +7,7 @@ import {
     Container,
     Row,
     Col,
+    InputGroup
 } from 'react-bootstrap';
 
 import { useHistory } from 'react-router-dom';
@@ -18,6 +19,7 @@ import api from '../../services/api';
 const FormQuarto = () => {
     const [codigo, setCodigo] = useState('');
     const [andar, setAndar] = useState('');
+    const [valor, setValor] = useState('');
     const [descricao, setDescricao] = useState('');
 
     const history = useHistory();
@@ -27,7 +29,7 @@ const FormQuarto = () => {
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            await api.post('/quarto', { codigo, andar, descricao });
+            await api.post('/quarto', { codigo, andar, valor, descricao });
 
             notificationAlertRef.current.notificationAlert({
                 place: 'tc',
@@ -103,6 +105,16 @@ const FormQuarto = () => {
                                                     onChange={(e) => setAndar(e.target.value)}
                                                 ></Form.Control>
                                             </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col md="6">
+                                            <label>Valor</label>
+                                            <InputGroup>
+                                                <InputGroup.Text>R$</InputGroup.Text>
+                                                <Form.Control type="number" required value={valor} onChange={(e) => setValor(e.target.value)} />
+                                                <InputGroup.Text>,00</InputGroup.Text>
+                                            </InputGroup>
                                         </Col>
                                     </Row>
                                     <Row>

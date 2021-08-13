@@ -8,11 +8,12 @@ class ReservaController {
             const { data_reserva } = request.body;
 
             const reserva = await db.collection('quartos').updateOne({ _id: ObjectID(quarto_id) }, {
+                status: 1,
                 $set: {
-                    "reservas": [{
+                    "reserva": {
                         "data_reserva": data_reserva,
                         "user_id": user_id,
-                    }]
+                    }
                 }
             });
 
