@@ -13,6 +13,7 @@ route.get('/quartos', QuartoController.index);
 route.get('/quarto/:id', QuartoController.show);
 route.delete('/quarto/:id', QuartoController.destroy);
 
+route.get('/reservas/:user_id', ReservaController.minhasReservas);
 route.post('/reserva/:quarto_id/:user_id', ReservaController.store);
 
 route.get('/users', UserController.index);

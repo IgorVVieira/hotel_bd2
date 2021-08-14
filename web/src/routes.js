@@ -20,6 +20,7 @@ import UserProfile from 'views/UserProfile';
 import Icons from 'views/Icons';
 import Notifications from 'views/Notifications';
 import FormQuarto from 'views/FormQuarto';
+import Reservas from './views/Reservas';
 
 const dashboardRoutes = [
   {
@@ -45,9 +46,9 @@ const dashboardRoutes = [
   },
   {
     path: "/nova-reserva",
-    name: "Nova reserva",
+    name: "Minhas reservas",
     icon: "nc-icon nc-lock-circle-open",
-    component: FormQuarto,
+    component: Reservas,
     layout: "/admin",
   },
   {

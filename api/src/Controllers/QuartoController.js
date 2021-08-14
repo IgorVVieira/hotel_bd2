@@ -34,7 +34,6 @@ class QuartoController {
                 andar,
                 valor,
                 descricao,
-                status: 0,
             });
             return response.json(quarto);
         } catch (error) {
