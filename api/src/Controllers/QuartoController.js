@@ -30,7 +30,6 @@ class QuartoController {
         try {
             const { codigo, andar, valor, descricao } = request.body;
             const quarto = await db.collection('quartos').insertOne({
-                codigo,
                 andar,
                 valor,
                 descricao,
@@ -46,7 +45,6 @@ class QuartoController {
             const { id, codigo, andar, valor, descricao } = request.body;
             const quarto = await db.collection('quartos').findOneAndUpdate({ _id: ObjectID(id) }, {
                 $set: {
-                    "codigo": codigo,
                     "andar": andar,
                     "valor": valor,
                     "descricao": descricao,

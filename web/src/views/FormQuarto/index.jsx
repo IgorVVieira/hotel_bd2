@@ -17,7 +17,6 @@ import NotificationAlert from 'react-notification-alert';
 import api from '../../services/api';
 
 const FormQuarto = () => {
-    const [codigo, setCodigo] = useState('');
     const [andar, setAndar] = useState('');
     const [valor, setValor] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -76,21 +75,6 @@ const FormQuarto = () => {
                             </Card.Header>
                             <Card.Body>
                                 <Form onSubmit={handleSubmit}>
-                                    <Row>
-                                        <Col md="4">
-                                            <Form.Group>
-                                                <label>Código</label>
-                                                <Form.Control
-                                                    placeholder="Código"
-                                                    type="number"
-                                                    required
-                                                    min="0"
-                                                    value={codigo}
-                                                    onChange={(e) => setCodigo(e.target.value)}
-                                                ></Form.Control>
-                                            </Form.Group>
-                                        </Col>
-                                    </Row>
                                     <Row>
                                         <Col md="4">
                                             <Form.Group>

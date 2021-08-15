@@ -80,7 +80,7 @@ const Dashboard = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const response = api.post(`/reserva/${quarto_id}/${user._id}`, {data_reserva});
+      const response = api.post(`/reserva/${quarto_id}/${user._id}`, { data_reserva });
       setShowModal(false);
       notificationAlertRef.current.notificationAlert({
         place: 'tc',
@@ -110,7 +110,15 @@ const Dashboard = () => {
         autoDismiss: 7
       });
     }
-    console.log(quarto_id);
+  }
+
+  const quartoReservado = (reservas) => {
+    reservas.map((reserva) => {
+      if (reserva.status == 1) {
+        return true;
+      }
+    });
+    return false;
   }
 
   return (
@@ -186,6 +194,7 @@ const Dashboard = () => {
                               <Button className="btn-simple btn-link p-1"
                                 type="button"
                                 variant="warning"
+                                disabled={quartoReservado(quarto.reservas)}
                                 onClick={() => {
                                   setShowModal(true);
                                   setQuartoId(quarto._id)
