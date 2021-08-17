@@ -1,5 +1,5 @@
 import { ObjectID } from 'mongodb';
-import { db } from '../database/connection';
+import db from '../database/connection';
 
 class QuartoController {
     async index(request, response) {
@@ -29,13 +29,14 @@ class QuartoController {
     async store(request, response) {
         try {
             const { codigo, andar, valor, descricao } = request.body;
-            const quarto = await db.collection('quartos').insertOne({
+            const quarto = await db.collection('quartos').save({
                 andar,
                 valor,
                 descricao,
             });
             return response.json(quarto);
         } catch (error) {
+            console.log(error);
             return response.status(500).json({ 'Erro': error });
         }
     }

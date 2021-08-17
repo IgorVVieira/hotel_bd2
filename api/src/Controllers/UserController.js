@@ -1,5 +1,5 @@
 import { ObjectID } from 'mongodb';
-import { db } from '../database/connection';
+import db from '../database/connection';
 
 class User {
     async index(request, response) {
@@ -31,7 +31,7 @@ class User {
     async store(request, response) {
         try {
             const { nome, idade, cpf, email, senha, adm } = request.body;
-            const user = await db.collection('users').insertOne({
+            const user = await db.collection('users').save({
                 nome,
                 idade,
                 cpf,
@@ -42,6 +42,7 @@ class User {
 
             return response.json(user);
         } catch (error) {
+            console.log(error);
             return response.status(500).json({ 'Erro': error });
         }
     }

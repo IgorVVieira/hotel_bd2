@@ -1,5 +1,5 @@
 import { ObjectID } from 'mongodb';
-import { db } from '../database/connection';
+import db from '../database/connection';
 
 class ReservaController {
     async minhasReservas(request, response) {
