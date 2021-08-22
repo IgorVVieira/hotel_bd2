@@ -5,7 +5,6 @@ class ReservaController {
     async minhasReservas(request, response) {
         try {
             const { user_id } = request.params;
-            console.log(user_id);
 
             const reservas = await db.collection('quartos').aggregate(
                 { $unwind: "$reservas" },
@@ -14,7 +13,6 @@ class ReservaController {
             ).toArray();
             return response.json(reservas);
         } catch (error) {
-            console.log(error);
             return response.status(500).json({ 'Erro': error });
         }
     }

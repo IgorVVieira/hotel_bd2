@@ -17,8 +17,6 @@ route.get('/reservas/:user_id', ReservaController.minhasReservas);
 route.post('/reserva/:quarto_id/:user_id', ReservaController.store);
 route.put('/reserva/finalizar', ReservaController.finalizarReserva);
 
-route.get('/users', UserController.index);
-route.get('/user/:id', UserController.show);
 route.post('/user', UserController.store);
 route.put('/user', UserController.update);
 
