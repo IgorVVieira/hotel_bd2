@@ -7,6 +7,7 @@ class QuartoController {
             const quartos = await db.collection('quartos').find().toArray();
             return response.json(quartos);
         } catch (error) {
+            console.log(error);
             return response.status(500).json({ 'Erro': error });
         }
     }
@@ -33,6 +34,7 @@ class QuartoController {
                 andar,
                 valor,
                 descricao,
+                reservas: [],
             });
             return response.json(quarto);
         } catch (error) {

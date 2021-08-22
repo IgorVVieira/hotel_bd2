@@ -28,7 +28,7 @@ const FormQuarto = () => {
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            await api.post('/quarto', { codigo, andar, valor, descricao });
+            await api.post('/quarto', { andar, valor, descricao });
 
             notificationAlertRef.current.notificationAlert({
                 place: 'tc',

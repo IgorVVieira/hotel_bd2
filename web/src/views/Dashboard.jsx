@@ -139,7 +139,6 @@ const Dashboard = () => {
                 <Table className="table-hover">
                   <thead>
                     <tr>
-                      <th className="border-0 text-center">Código</th>
                       <th className="border-0 text-center">Andar</th>
                       <th className="border-0">Valor</th>
                       <th className="border-0">Descrição</th>
@@ -151,7 +150,6 @@ const Dashboard = () => {
                     {quartos.map((quarto) => {
                       return (
                         <tr key={quarto._id}>
-                          <td className="text-center">{quarto.codigo}</td>
                           <td>{quarto.andar}</td>
                           <td>R$ {quarto.valor},00</td>
                           <td>{quarto.descricao}</td>
