@@ -22,13 +22,8 @@ const Reservas = () => {
 
     useEffect(async () => {
         try {
-            const response = await api.get(`/reservas/${user._id}`);
-            let reservasrray = [];
-
-            response.data.map((quarto) => {
-                reservasrray.push(quarto.reservas);
-            });
-            setReservas(reservasrray);
+            const response = await api.get(`/reservas/${user._key}`);
+            setReservas(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -38,8 +33,6 @@ const Reservas = () => {
         event.preventDefault();
         try {
             const response = await api.put('/reserva/finalizar', { reserva_id });
-
-            console.log(response.data);
 
             notificationAlertRef.current.notificationAlert({
                 place: 'tc',
@@ -94,9 +87,10 @@ const Reservas = () => {
                                     <tbody>
                                         {reservas.map((reserva) => {
                                             return (
-                                                <tr key={reserva._id}>
-                                                    <td>{reserva.quarto_id}</td>
-                                                    <td>{reserva.data_reserva.split('-').reverse().join("/")}</td>
+                                                <tr key={reserva._key}>
+                                                    <td>{reserva._to}</td>
+                                                    <td>{reserva.data_reserva}</td>
+                                                    {/* .split('-').reverse().join("/") */}
                                                     <td>{reserva.status ? 'Em uso' : 'Finalizado'}</td>
                                                     <td>
                                                         <OverlayTrigger
@@ -108,7 +102,7 @@ const Reservas = () => {
                                                                 type="button"
                                                                 variant="warning"
                                                                 onClick={(e) => {
-                                                                    finalizarReserva(e, reserva._id);
+                                                                    finalizarReserva(e, reserva._key);
                                                                 }}
                                                             >
                                                                 <i className="nc-icon nc-lock-circle-open"></i>

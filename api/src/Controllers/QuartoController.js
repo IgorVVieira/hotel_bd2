@@ -4,9 +4,14 @@ import db from '../database/connection';
 class QuartoController {
     async index(request, response) {
         try {
-            const quartos = await db.collection('quartos').find().toArray();
+            const cursor = await db.query(`
+                FOR quarto IN quartos
+                RETURN quarto`);
+
+            const quartos = await cursor.all();
             return response.json(quartos);
         } catch (error) {
+            console.log(error);
             return response.status(500).json({ 'Erro': error });
         }
     }
@@ -28,7 +33,7 @@ class QuartoController {
     }
     async store(request, response) {
         try {
-            const { codigo, andar, valor, descricao } = request.body;
+            const { andar, valor, descricao } = request.body;
             const quarto = await db.collection('quartos').save({
                 andar,
                 valor,

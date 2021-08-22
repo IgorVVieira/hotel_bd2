@@ -21,7 +21,7 @@ import { getUser } from '../services/auth';
 const Dashboard = () => {
   const [quartos, setQuartos] = useState([]);
   const [data_reserva, setDataReserva] = useState('');
-  const [quarto_id, setQuartoId] = useState('');
+  const [quarto_key, setQuartoKey] = useState('');
   const user = JSON.parse(getUser());
 
   const [showModal, setShowModal] = useState(false);
@@ -80,7 +80,7 @@ const Dashboard = () => {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const response = api.post(`/reserva/${quarto_id}/${user._id}`, { data_reserva });
+      const response = await api.post(`/reserva/${quarto_key}/${user._key}`, { data_reserva });
       setShowModal(false);
       notificationAlertRef.current.notificationAlert({
         place: 'tc',
@@ -110,15 +110,6 @@ const Dashboard = () => {
         autoDismiss: 7
       });
     }
-  }
-
-  const quartoReservado = (reservas) => {
-    reservas.map((reserva) => {
-      if (reserva.status == 1) {
-        return true;
-      }
-    });
-    return false;
   }
 
   return (
@@ -151,11 +142,11 @@ const Dashboard = () => {
                     {quartos.map((quarto) => {
                       return (
                         <tr key={quarto._id}>
-                          <td className="text-center">{quarto.codigo}</td>
+                          <td className="text-center">{quarto._id}</td>
                           <td>{quarto.andar}</td>
                           <td>R$ {quarto.valor},00</td>
                           <td>{quarto.descricao}</td>
-                          <td className="text-center">{quarto.reservas ? quarto.reservas.length : 0}</td>
+                          <td className="text-center">5</td>
                           <td className="td-actions text-left">
                             <OverlayTrigger
                               overlay={
@@ -194,10 +185,9 @@ const Dashboard = () => {
                               <Button className="btn-simple btn-link p-1"
                                 type="button"
                                 variant="warning"
-                                disabled={quartoReservado(quarto.reservas)}
                                 onClick={() => {
                                   setShowModal(true);
-                                  setQuartoId(quarto._id)
+                                  setQuartoKey(quarto._key)
                                 }}
                               >
                                 <i className="nc-icon nc-lock-circle-open"></i>
